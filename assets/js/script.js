@@ -4,9 +4,12 @@ $(document).ready(intializeApp);
 var firstCardClicked = null;
 var secondCardClicked = null;
 var matches = null;
+var max_matches = 2;
 
 function intializeApp(){
   $(".card").on('click', handleCardClick);
+  $("#close_btn").on('click', closeModal);
+  $("#reset_btn").on('click', resetGame);
 }
 
 //stores card clicked and checks if they match
@@ -29,13 +32,23 @@ function handleCardClick(event){
       var firstCardClickedURL = firstFront.css("background-image");
       var secondCardClickedURL = secondFront.css("background-image");
          if(firstCardClickedURL === secondCardClickedURL){
-            console.log("cards match");
             matches++;
+            firstCardClicked = null;
+            secondCardClicked = null;
+            //checks if they got all the matches
+           if(matches === max_matches){
+                  console.log('YOU WIN');
+                  $(".modal").removeClass("hide")
+                }
+
           }
           else{
-            console.log("cards don't match");
-            setTimeout(hideFrontCard, 1500)
+             setTimeout(hideFrontCard, 1500);
+
           }
+
+
+
     }
 
   function hideFrontCard() {
@@ -45,6 +58,26 @@ function handleCardClick(event){
     firstFront.addClass("hide");
     secondBack.removeClass("hide");
     secondFront.addClass("hide");
+    firstCardClicked = null;
+    secondCardClicked = null;
+
+
   }
 
+
+}
+
+//Close modal
+function closeModal(){
+  $(".modal").addClass("hide");
+}
+
+//reset game
+function resetGame(){
+  closeModal();
+  var front = $(".card").find(".front");
+  var back = $(".card").find(".back");
+  back.removeClass("hide");
+  front.addClass("hide");
+  matches = 0;
 }

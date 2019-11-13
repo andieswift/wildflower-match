@@ -32,6 +32,25 @@ main {
 
 
 }
+.modal{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  overflow: none;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid pink;
+  width: 50%;
+  text-align: center;
+  border-radius: 20px;
+}
+
 .stats-container {
   display: flex;
   align-items: center;
