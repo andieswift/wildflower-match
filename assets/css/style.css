@@ -1,1 +1,104 @@
+body{
+  background-color: lightpink;
+  margin: 0px;
 
+
+
+}
+.display-game {
+  display: flex;
+  height: 84vh;
+  width: 100vw;
+}
+
+aside, header, main {
+   border: 2px solid black;
+
+}
+
+header{
+  height: 15vh;
+  text-align: center;
+
+}
+aside {
+  width: 15%;
+  text-align: center;
+
+
+}
+main {
+  width: 100%;
+
+
+}
+.modal{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  overflow: none;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid pink;
+  width: 50%;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.stats-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 98%;
+  height: 100%;
+}
+
+.card {
+  background-color: black;
+  margin: 3px;
+  width: 15.66%;
+  height: 30.33%;
+  cursor: pointer;
+}
+
+ .back, .front{
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position:center;
+}
+.back{
+    background-image: url(../images/lfz-card.jpg);
+}
+
+.css-img{
+   background-image: url(../images/css-logo.png);
+}
+
+.dock-img{
+  background-image: url(../images/docker-logo.jpg);
+}
+
+.hide{
+  display: none;
+}
+
+.stats-content {
+  width: 95%;
+  height: 10%;
+  border: 2px solid gray;
+
+}
