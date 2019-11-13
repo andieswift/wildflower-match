@@ -65,8 +65,12 @@ main {
     background-image: url(../images/lfz-card.jpg);
 }
 
-.front{
+.css-img{
    background-image: url(../images/css-logo.png);
+}
+
+.dock-img{
+  background-image: url(../images/docker-logo.jpg);
 }
 
 .hide{
