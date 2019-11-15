@@ -1,29 +1,37 @@
 body{
-  background-color: lightpink;
+  background-image: url(../images/animalcrossingbackground.jpg);
   margin: 0px;
+  background-repeat: no-repeat;
+  font-family: 'Averia Libre';
 
 
 
 }
 .display-game {
   display: flex;
-  height: 84vh;
+  height: 78vh;
   width: 100vw;
 }
 
-aside, header, main {
-   border: 2px solid black;
 
+header img{
+  position: relative;
+  bottom: 55 px;
+  height: 100%;
 }
-
 header{
-  height: 15vh;
+  height: 20vh;
   text-align: center;
+  background-repeat: no-repeat;
+  margin-left: auto;
+  margin-right: auto;
 
 }
 aside {
+  display: inline-block;
   width: 15%;
   text-align: center;
+  height: 78vh;
 
 
 }
@@ -56,7 +64,15 @@ main {
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 10vh;
+  height: 78vh;
 
+}
+aside img {
+  position: relative;
+  height: 20%;
+  bottom: 0px;
 }
 
 .container {
@@ -67,11 +83,11 @@ main {
 }
 
 .card {
-  background-color: black;
-  margin: 3px;
+   margin: 5px;
   width: 15.66%;
   height: 30.33%;
   cursor: pointer;
+
 }
 
  .back, .front{
@@ -79,17 +95,50 @@ main {
   width: 100%;
   background-size: cover;
   background-position:center;
+  border-radius: 25px;
+  border: solid rgb(11, 85, 30);
+  border-width: 3px 3px;
+
 }
 .back{
-    background-image: url(../images/lfz-card.jpg);
+    background-image: url(../images/acnl-card-back.jpg);
+
 }
 
+/*front images*/
 .css-img{
-   background-image: url(../images/css-logo.png);
+   background-image: url(../images/apple.jpg);
 }
 
 .dock-img{
-  background-image: url(../images/docker-logo.jpg);
+  background-image: url(../images/banana.jpg);
+}
+
+.github-img{
+  background-image: url(../images/orange.jpg);
+}
+
+.html-img {
+background-image: url(../images/sea-bass.jpg);
+}
+
+.js-img{
+  background-image: url(../images/red-snapper.jpg);
+}
+
+.mysql-img{
+  background-image: url(../images/shark.jpg);
+}
+.node-img{
+  background-image: url(../images/bee.jpg);
+}
+
+.php-img{
+  background-image: url(../images/butterfly.jpg);
+}
+
+.react-img{
+  background-image: url(../images/horned-atlas.jpg);
 }
 
 .hide{
@@ -98,7 +147,17 @@ main {
 
 .stats-content {
   width: 95%;
-  height: 10%;
-  border: 2px solid gray;
+  height: 20%;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  margin-bottom: 20px;
 
+}
+
+.stats-content p{
+  margin: 0px;
+}
+
+.extra-margin{
+  margin-bottom: 60px;
 }
