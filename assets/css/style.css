@@ -1,20 +1,23 @@
+/* background image and font */
 body{
   background-image: url(../images/animalcrossingbackground2.jpg);
   background-size: 185%;
   margin: 0px;
   background-repeat: no-repeat;
   font-family: 'Averia Libre';
-
-
-
-}
-.display-game {
-  display: flex;
-  height: 78vh;
-  width: 100vw;
 }
 
+/* Header */
+header{
+  height: 20vh;
+  text-align: center;
+  background-repeat: no-repeat;
+  margin-left: auto;
+  margin-right: auto;
 
+}
+
+/* Animal Crossing Logo */
 header .logo {
   position: relative;
   bottom: 55 px;
@@ -22,6 +25,7 @@ header .logo {
   left: 10%;
 }
 
+/* Bells in the left corner */
 .bells{
   position: relative;
   display: inline-block;
@@ -50,43 +54,20 @@ header .logo {
   bottom: 84%;
 }
 
-header{
-  height: 20vh;
-  text-align: center;
-  background-repeat: no-repeat;
-  margin-left: auto;
-  margin-right: auto;
-
+/* Display game holds the aside and card container */
+.display-game {
+  display: flex;
+  height: 78vh;
+  width: 100vw;
 }
 
-audio {
-  position: relative;
-  right:21%;
-
-}
-
+/* Aside holds stats container */
 aside {
   display: inline-block;
   width: 15%;
   text-align: center;
   height: 78vh;
-
-
 }
-main {
-  width: 100%;
-
-
-}
-.modal{
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  z-index: 1;
-  overflow: none;
-  background-color: rgba(0,0,0,0.4);
-}
-
 
 .stats-container {
   display: flex;
@@ -96,86 +77,29 @@ main {
   background-color: rgba(255, 255, 255, 0.4);
   width: 10vh;
   height: 78vh;
+}
+
+.stats-content {
+  width: 95%;
+  height: 20%;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  margin-bottom: 20px;
 
 }
 
-.start-game p,
-#end-game p {
-  display: inline-block;
-  position: relative;
-
-}
-
-.modal .bottom-text{
-  display: inline-block;
-  position: relative;
-  bottom: 1%;
-  left: 39%;
-  width: 23%;
-}
-
-.typewriter{
+.stats-content p{
   margin: 0px;
 }
 
-.white-font{
-  color: white;
-  font-size: 3vmin;
-  margin:0px;
- }
-
-.dark-green-font {
-  top: 39%;
-  left: 8%;
-  font-size: 2.5vmin;
-  color: rgb(0, 56, 0);
+/* Needed this to make stats look good */
+.extra-margin{
+  margin-bottom: 60px;
 }
 
-.nook {
-  position: relative;
-  height: 50%;
-
-}
-.start-game .nook{
-  bottom: 14%;
-  left: 29%;
-}
-
-#end-game .nook {
-  bottom: 14%;
-  left: 10%;
-}
-
-.speach-bubble {
-  position: relative;
-  height: 25%;
-  top: 60%;
-  left: 35%;
-
-}
-
-.start-game .speach-bubble {
-  cursor: pointer;
-}
-
-.button-container{
-  display: inline-block;
-  position: relative;
-  top: 12%;
-  left: 17%;
-  width: 23%;
-  }
-
-button{
-  display: inline-block;
-  background-color: white;
-  border: 2px solid rgb(243, 175, 48);
-  border-radius: 15px;
-  padding: 2%;
-  cursor: pointer;
-  margin: 5%;
-  width: 36%;
-
+/* Main holds the cards which are made dynamically */
+main {
+  width: 100%;
 }
 
 .container {
@@ -185,11 +109,21 @@ button{
   height: 100%;
 }
 
-.card {
-   margin: 5px;
+/* Added this to be able to flip cards */
+.scene{
+  margin: 5px;
   width: 15.66%;
   height: 30.33%;
+  perspective: 600px;
+}
+
+.card {
+  height: 100%;
+  width: 100%;
   cursor: pointer;
+  position: relative;
+  transition: transform 1s;
+  transform-style: preserve-3d;
 
 }
 
@@ -198,14 +132,24 @@ button{
   width: 100%;
   background-size: cover;
   background-position:center;
+  position: absolute;
   border-radius: 25px;
   border: solid rgb(11, 85, 30);
   border-width: 3px 3px;
+  backface-visibility: hidden;
 
 }
+
 .back{
     background-image: url(../images/acnl-card-back.jpg);
+}
 
+.front{
+  transform: rotateY(-180deg);
+}
+
+.clicked {
+  transform: rotateY(180deg);
 }
 
 /*front images*/
@@ -248,19 +192,88 @@ background-image: url(../images/sea-bass.jpg);
   display: none;
 }
 
-.stats-content {
-  width: 95%;
-  height: 20%;
-  background-color: rgba(255, 255, 255, 0.2);
+/* Modal CSS */
+.modal{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  overflow: none;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.start-game p,
+#end-game p {
+  display: inline-block;
+  position: relative;
+
+}
+
+.modal .bottom-text{
+  display: inline-block;
+  position: relative;
+  bottom: 1%;
+  left: 39%;
+  width: 23%;
+}
+
+.white-font{
+  color: white;
+  font-size: 3vmin;
+  margin:0px;
+ }
+
+.dark-green-font {
+  top: 39%;
+  left: 8%;
+  font-size: 2.5vmin;
+  color: rgb(0, 56, 0);
+}
+
+.nook {
+  position: relative;
+  height: 50%;
+}
+
+/* Nook had to be positioned differently for the start and end */
+.start-game .nook{
+  bottom: 14%;
+  left: 29%;
+}
+
+#end-game .nook {
+  bottom: 14%;
+  left: 10%;
+}
+
+.speach-bubble {
+  position: relative;
+  height: 25%;
+  top: 60%;
+  left: 35%;
+}
+
+.start-game .speach-bubble {
+  cursor: pointer;
+}
+
+/* Buttons for the end of game modal */
+.button-container{
+  display: inline-block;
+  position: relative;
+  top: 12%;
+  left: 17%;
+  width: 23%;
+  }
+
+button{
+  display: inline-block;
+  background-color: white;
+  border: 2px solid rgb(243, 175, 48);
   border-radius: 15px;
-  margin-bottom: 20px;
+  padding: 2%;
+  cursor: pointer;
+  margin: 5%;
+  width: 36%;
 
-}
-
-.stats-content p{
-  margin: 0px;
-}
-
-.extra-margin{
-  margin-bottom: 60px;
 }
