@@ -1,5 +1,6 @@
 body{
-  background-image: url(../images/animalcrossingbackground.jpg);
+  background-image: url(../images/animalcrossingbackground2.jpg);
+  background-size: 185%;
   margin: 0px;
   background-repeat: no-repeat;
   font-family: 'Averia Libre';
@@ -14,11 +15,41 @@ body{
 }
 
 
-header img{
+header .logo {
   position: relative;
   bottom: 55 px;
   height: 100%;
+  left: 10%;
 }
+
+.bells{
+  position: relative;
+  display: inline-block;
+  width: 15%;
+  height: 37%;
+  background-color: beige;
+  border-radius: 15px;
+  left: 29%;
+  bottom: 24%;
+  text-align: right;
+}
+
+.bells p{
+  display: inline-block;
+  position: relative;
+  right: 10%;
+  bottom: 17%;
+  font-size: 3vmin;
+}
+
+.bells img{
+  position: fixed;
+  display: inline-block;
+  height: 7%;
+  right: 16%;
+  bottom: 84%;
+}
+
 header{
   height: 20vh;
   text-align: center;
@@ -27,6 +58,13 @@ header{
   margin-right: auto;
 
 }
+
+audio {
+  position: relative;
+  right:21%;
+
+}
+
 aside {
   display: inline-block;
   width: 15%;
@@ -49,15 +87,6 @@ main {
   background-color: rgba(0,0,0,0.4);
 }
 
-.modal-content {
-  background-color: white;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid pink;
-  width: 50%;
-  text-align: center;
-  border-radius: 20px;
-}
 
 .stats-container {
   display: flex;
@@ -69,10 +98,84 @@ main {
   height: 78vh;
 
 }
-aside img {
+
+.start-game p,
+#end-game p {
+  display: inline-block;
   position: relative;
-  height: 20%;
-  bottom: 0px;
+
+}
+
+.modal .bottom-text{
+  display: inline-block;
+  position: relative;
+  bottom: 1%;
+  left: 39%;
+  width: 23%;
+}
+
+.typewriter{
+  margin: 0px;
+}
+
+.white-font{
+  color: white;
+  font-size: 3vmin;
+  margin:0px;
+ }
+
+.dark-green-font {
+  top: 39%;
+  left: 8%;
+  font-size: 2.5vmin;
+  color: rgb(0, 56, 0);
+}
+
+.nook {
+  position: relative;
+  height: 50%;
+
+}
+.start-game .nook{
+  bottom: 14%;
+  left: 29%;
+}
+
+#end-game .nook {
+  bottom: 14%;
+  left: 10%;
+}
+
+.speach-bubble {
+  position: relative;
+  height: 25%;
+  top: 60%;
+  left: 35%;
+
+}
+
+.start-game .speach-bubble {
+  cursor: pointer;
+}
+
+.button-container{
+  display: inline-block;
+  position: relative;
+  top: 12%;
+  left: 17%;
+  width: 23%;
+  }
+
+button{
+  display: inline-block;
+  background-color: white;
+  border: 2px solid rgb(243, 175, 48);
+  border-radius: 15px;
+  padding: 2%;
+  cursor: pointer;
+  margin: 5%;
+  width: 36%;
+
 }
 
 .container {
@@ -106,38 +209,38 @@ aside img {
 }
 
 /*front images*/
-.css-img{
+.apple{
    background-image: url(../images/apple.jpg);
 }
 
-.dock-img{
+.banana{
   background-image: url(../images/banana.jpg);
 }
 
-.github-img{
+.orange{
   background-image: url(../images/orange.jpg);
 }
 
-.html-img {
+.seaBass {
 background-image: url(../images/sea-bass.jpg);
 }
 
-.js-img{
+.redSnapper{
   background-image: url(../images/red-snapper.jpg);
 }
 
-.mysql-img{
+.shark{
   background-image: url(../images/shark.jpg);
 }
-.node-img{
+.bee{
   background-image: url(../images/bee.jpg);
 }
 
-.php-img{
+.butterfly{
   background-image: url(../images/butterfly.jpg);
 }
 
-.react-img{
+.hornedAtlas{
   background-image: url(../images/horned-atlas.jpg);
 }
 

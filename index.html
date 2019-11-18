@@ -8,17 +8,40 @@
    <script src = "assets/js/script.js"></script>
 </head>
 <body>
+<iframe src="assets/images/153 - Tortimer Island - Hide and Seek.mp3" allow="autoplay" style="display:none" id="iframeAudio">
+</iframe>
 <!--MODAL-->
-  <div class="modal hide">
-    <div class="modal-content">
-        <p> YOU WIN!</p>
-        <button id="close_btn">close</button>
-        <button id="reset_btn">reset</button>
-    </div>
+  <div id="end-game" class="modal hide">
+        <img class="speach-bubble" src="assets/images/animal_crossing_dialogue_box_templates.png">
+        <p class="dark-green-font"> Tom Nook </p> <br />
+        <div class="bottom-text">
+          <p class="white-font">It looks like you finished paying off your home loan! What would you like to do next?</p>
+        </div>
+        <div class="button-container">
+          <button id="close_btn"> close </button>
+          <button id="reset_btn"> play again</button>
+        </div>
+
+        <img class="nook" src="assets/images/tom-nook.png">
+
   </div>
+<!--START MODAL-->
+<div class="modal start-game">
+      <img class="speach-bubble" src ="assets/images/animal_crossing_dialogue_box_templates.png">
+      <p class="dark-green-font"> Tom Nook </p> <br/>
+      <div class="bottom-text">
+      <p class= "white-font">You have 32,660 bells left on your </p>
+      <p class="white-font"> house loan!</p>
+      </div>
+      <img class="nook" src="assets/images/tom-nook.png">
+</div>
 <!--HEADER-->
   <header>
-      <img src="assets\images\animal-crossing-logo2.png">
+    <img class ="logo" src="assets\images\animal-crossing-logo2.png">
+      <div class = "bells">
+        <img src = "assets/images/bells.png">
+        <p> 0 </p>
+      </div>
   </header>
   <div class="display-game">
   <!--ASIDE-->
@@ -38,7 +61,7 @@
     <div id="Accuracy" class="stats-content"><p>0%</p></div>
     </div>
   </div>
-  <img src = "assets/images/tom-nook.png">
+
   </aside>
 
   <!--MAIN-->
