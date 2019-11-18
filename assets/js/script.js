@@ -6,18 +6,27 @@ var secondCardClicked = null;
 var matches = null;
 var max_matches = 9;
 var attemps = null;
+var bellsCount = 0;
 var games_played = 0;
 var lockGame = false;
-var classArray = ["css-img", "css-img", "dock-img", "dock-img", "github-img", "github-img", "html-img", "html-img", "js-img",
-                  "js-img", "mysql-img", "mysql-img", "node-img", "node-img", "php-img", "php-img",
-                 "react-img", "react-img"];
+var classArray = ["apple", "apple", "banana", "banana", "orange", "orange", "seaBass", "seaBass", "shark",
+                  "shark", "bee", "bee", "butterfly", "butterfly", "hornedAtlas", "hornedAtlas",
+                 "redSnapper", "redSnapper"];
+var costOfItems = [
+           {name: "front apple", bells: 500 }, { name: "front banana", bells: 500 }, { name: "front orange", bells: 500},
+           {name: "front seaBass", bells: 160}, {name: "front shark", bells: 15000}, {name: "front bee", bells: 2500},
+           {name: "front butterfly", bells: 2500}, {name: "front hornedAtlas", bells: 8000}, {name: "front redSnapper", bells: 3000}
+                    ];
 
 function intializeApp(){
 
   createCard();
+  $(".start-game").on('click', hideTom);
   $(".container").on('click','.card', handleCardClick);
   $("#close_btn").on('click', closeModal);
   $("#reset_btn").on('click', resetGame);
+
+
 }
 
 //stores card clicked and checks if they match
@@ -50,11 +59,13 @@ function handleCardClick(event){
       var secondCardClickedURL = secondFront.css("background-image");
          if(firstCardClickedURL === secondCardClickedURL){
             matches++;
+            var cardName = front.attr('class');
             firstCardClicked = null;
             secondCardClicked = null;
+            bellsCount += matchBellsToItem(cardName);
             //checks if they got all the matches
            if(matches === max_matches){
-                  $(".modal").removeClass("hide");
+                  $("#end-game").removeClass("hide");
                   games_played++;
                 }
 
@@ -102,6 +113,10 @@ function resetGame(){
   $("#attemps").text(attemps);
   $(".container").empty();
   createCard();
+  $(".start-game").removeClass("hide");
+  bellsCount = 0;
+  $(".bells p").text(bellsCount);
+
 
 }
 
@@ -117,11 +132,13 @@ function displayStats(){
   $("#games_played").text(games_played);
   $("#attemps").text(attemps);
   $("#Accuracy").text(accuracy);
+  $(".bells p").text(bellsCount);
 }
 
 //Dynamically create cards
 function createCard(){
-  var arr = shuffle(classArray);
+  //var arr = shuffle(classArray);
+  var arr = classArray;
   var container = $(".container");
   for(var index=0; index< arr.length; index++){
     var currentCard = $("<div>").addClass("card");
@@ -155,4 +172,19 @@ function createCard(){
 
   return array;
 
-};
+}
+
+function hideTom(){
+  $(".start-game").addClass("hide");
+
+}
+
+function matchBellsToItem (itemClass){
+  var indexOfItem = null;
+  var index = 0;
+  while(itemClass !== costOfItems[index].name){
+    index++;
+  }
+  return costOfItems[index].bells;
+
+}
