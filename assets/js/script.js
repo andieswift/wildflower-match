@@ -155,8 +155,7 @@ function displayStats(){
 
 //Dynamically create cards
 function createCard(){
-  //var arr = shuffle(classArray);
-  var arr = classArray;
+  var arr = shuffle(classArray);
   var container = $(".container");
   for(var index=0; index< arr.length; index++){
     var sceneDiv = $("<div>").addClass("scene");
