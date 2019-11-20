@@ -25,9 +25,19 @@ var costOfItems = [
            {name: "front seaBass", bells: 160}, {name: "front shark", bells: 15000}, {name: "front bee", bells: 2500},
            {name: "front butterfly", bells: 2500}, {name: "front hornedAtlas", bells: 8000}, {name: "front redSnapper", bells: 3000}
                     ];
+//for first text effect
+var indexStart = 0;
+var startText = 'You have 32, 660 bells left on your house loan!';
+var speed = 100;
+
+//end game text effect
+var indexEnd = 0;
+var endText = 'It looks like you finished paying off your home loan! What would you like to do next?';
 
 function intializeApp(){
   createCard();
+  startTextTypewriter();
+
   //start game modal hide content
   $(".start-game").on('click', hideTom);
   //click handler
@@ -78,6 +88,7 @@ function handleCardClick(event){
            if(matches === max_matches){
                   //runs end game modal if they won
                   setTimeout(endGameModal, 1500);
+                  endTextTypewriter();
                   games_played++;
                 }
           }
@@ -94,6 +105,8 @@ function handleCardClick(event){
   function endGameModal(){
     $("#end-game").removeClass("hide")
     audio.pause();
+
+
   }
 
   //turns cards back over if player got match wrong
@@ -155,7 +168,8 @@ function displayStats(){
 
 //Dynamically create cards
 function createCard(){
-  var arr = shuffle(classArray);
+  //var arr = shuffle(classArray);
+  var arr = classArray;
   var container = $(".container");
   for(var index=0; index< arr.length; index++){
     var sceneDiv = $("<div>").addClass("scene");
@@ -211,4 +225,21 @@ function matchBellsToItem (itemClass){
   }
   return costOfItems[index].bells;
 
+}
+
+//make text appear like the game
+function startTextTypewriter() {
+  if (indexStart < startText.length) {
+    document.getElementById("demo").innerHTML += startText.charAt(indexStart);
+    indexStart++;
+    setTimeout(startTextTypewriter, speed);
+  }
+}
+
+function endTextTypewriter() {
+  if (indexEnd < endText.length) {
+    document.getElementById("endtext").innerHTML += endText.charAt(indexEnd);
+    indexEnd++;
+    setTimeout(endTextTypewriter, speed);
+  }
 }
