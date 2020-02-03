@@ -1,99 +1,82 @@
 $(document).ready(intializeApp);
 
-//VARIABLES
-//tracks cards clicked
-var firstCardClicked = null;
-var secondCardClicked = null;
-//player matches and total matches
-var matches = null;
-var max_matches = 9;
-var attemps = null;
-//bells is animal crossing $, this keeps track of the bells the player earns
-var bellsCount = 0;
-var games_played = 0;
-//lock game keeps player from double clicking the same card
-var lockGame = false;
-//added audio to the background after player starts to play
-var audio = null;
-//used this to dynamically create cards adding the background img, and to shuffle cards
-var classArray = ["apple", "apple", "banana", "banana", "orange", "orange", "seaBass", "seaBass", "shark",
-                  "shark", "bee", "bee", "butterfly", "butterfly", "hornedAtlas", "hornedAtlas",
-                 "redSnapper", "redSnapper"];
-//maps the card to the cost of item to increase bell count
-var costOfItems = [
-           {name: "front apple", bells: 500 }, { name: "front banana", bells: 500 }, { name: "front orange", bells: 500},
-           {name: "front seaBass", bells: 160}, {name: "front shark", bells: 15000}, {name: "front bee", bells: 2500},
-           {name: "front butterfly", bells: 2500}, {name: "front hornedAtlas", bells: 8000}, {name: "front redSnapper", bells: 3000}
-                    ];
-//for first text effect
-var indexStart = 0;
-var startText = 'You have 32, 660 bells left on your house loan!';
-var speed = 100;
+let firstCardClicked = null;
+let secondCardClicked = null;
+let matches = null;
+const max_matches = 9;
+let attemps = null;
+let games_played = 0;
+let lockGame = false;
+let audio = null;
 
-//end game text effect
-var indexEnd = 0;
-var endText = 'It looks like you finished paying off your home loan! What would you like to do next?';
+let classArray = ["apple", "apple", "banana", "banana", "orange", "orange", "seaBass", "seaBass", "shark",
+                  "shark", "bee", "bee", "butterfly", "butterfly", "hornedAtlas", "hornedAtlas",
+                  "redSnapper", "redSnapper"];
+
+let costOfItems = [
+            {name: "front apple", bells: 500 }, { name: "front banana", bells: 500 }, { name: "front orange", bells: 500},
+            {name: "front seaBass", bells: 160}, {name: "front shark", bells: 15000}, {name: "front bee", bells: 2500},
+            {name: "front butterfly", bells: 2500}, {name: "front hornedAtlas", bells: 8000}, {name: "front redSnapper", bells: 3000}
+                    ];
+
+let indexStart = 0;
+let speed = 100;
+
+
+let indexEnd = 0;
 
 function intializeApp(){
   createCard();
-  startTextTypewriter();
-
-  //start game modal hide content
-  $(".start-game").on('click', hideTom);
-  //click handler
   $(".container").on('click','.card', handleCardClick);
-  //end game modal reset or hide
   $("#close_btn").on('click', closeModal);
   $("#reset_btn").on('click', resetGame);
 }
 
-//stores card clicked and checks if they match
+
 function handleCardClick(event){
-//prevents from double clikcing the same card to get a match
+
+  let $target = $(event.currentTarget);
+  $target.addClass("clicked");
+
   if(lockGame){
     return;
   }
-  var target = $(event.currentTarget);
-  target.addClass("clicked");
 
-  //makes sure the card hasn't already been clicked
-  if(target.find(".back").hasClass('clicked')){
+  if($target.find(".back").hasClass('clicked')){
     return;
   }
-    var target = $(event.currentTarget);
-    var front = target.find(".front");
-    var back = target.find(".back");
 
-    //if card clicked is null set equal to target
-    if(!firstCardClicked){
-      firstCardClicked = target;
+  let front = $target.find(".front");
+  let back = $target.find(".back");
 
-    }
-    //otherwise set it equal to secon card clicked
+
+  if(!firstCardClicked){
+    firstCardClicked = $target;
+
+  }
+
     else{
-      secondCardClicked = target;
+      secondCardClicked = $target;
       attemps++;
-      //checking if the cards match
-      var firstFront = firstCardClicked.find(".front");
-      var secondFront = secondCardClicked.find(".front");
-      var firstCardClickedURL = firstFront.css("background-image");
-      var secondCardClickedURL = secondFront.css("background-image");
-         if(firstCardClickedURL === secondCardClickedURL){
+
+      let firstFront = firstCardClicked.find(".front");
+      let secondFront = secondCardClicked.find(".front");
+      let firstCardClickedURL = firstFront.css("background-color");
+      let secondCardClickedURL = secondFront.css("background-color");
+          if(firstCardClickedURL === secondCardClickedURL){
             matches++;
-            var cardName = front.attr('class');
+            let cardName = front.attr('class');
             firstCardClicked = null;
             secondCardClicked = null;
             bellsCount += matchBellsToItem(cardName);
-            //checks if they got all the matches
-           if(matches === max_matches){
-                  //runs end game modal if they won
+
+            if(matches === max_matches){
+
                   setTimeout(endGameModal, 1500);
-                  endTextTypewriter();
                   games_played++;
                 }
           }
           else{
-            //if it isn't a matcch they are locked out of clicking until timeout ends
             lockGame = true;
             setTimeout(hideFrontCard, 1500);
 
@@ -101,15 +84,11 @@ function handleCardClick(event){
         displayStats();
     }
 
-  //shows end game modal and pauses music
+
   function endGameModal(){
     $("#end-game").removeClass("hide")
-    audio.pause();
-
-
   }
 
-  //turns cards back over if player got match wrong
   function hideFrontCard() {
     firstCardClicked.removeClass("clicked");
     secondCardClicked.removeClass("clicked");
@@ -118,65 +97,52 @@ function handleCardClick(event){
     secondCardClicked = null;
     lockGame = false;
   }
-
-
 }
 
-//Close modal - for both the start and end of game modal
 function closeModal(){
   $(".modal").addClass("hide");
 }
 
-//reset game
 function resetGame(){
   closeModal();
-  //reset variables back to 0
   matches = 0;
   attemps = 0;
   bellsCount = 0;
 
-  //resets what is displayed
   displayStats();
-  //accuraccy was displaying NaN b/c it was dividing by 0
   $("#Accuracy").text("0%");
-  //clears out cards
   $(".container").empty();
-  //cretes new cards that
   createCard();
-  //hides start game modal
   $(".start-game").removeClass("hide");
 
 }
 
-//calculates accuracy by dividing matches by attemps
-//returns the accuracy as a string with % ready to be displayed
+
 function calculateAccuracy(){
-  var accuracy = matches/attemps;
+  let accuracy = matches/attemps;
   accuracy = Math.round(10000 * accuracy) / 100;
-  var accuracyStr = accuracy + '%';
+  let accuracyStr = accuracy + '%';
   return accuracyStr;
 }
 
-//displays all values related to the stats in the correct div
+
 function displayStats(){
-  var accuracy = calculateAccuracy();
-  $("#games_played").text(games_played);
-  $("#attemps").text(attemps);
-  $("#Accuracy").text(accuracy);
+  let accuracy = calculateAccuracy();
+  $("#games_played p").text(games_played);
+  $("#attemps p").text(attemps);
+  $("#Accuracy p").text(accuracy);
   $(".bells p").text(bellsCount);
 }
 
-//Dynamically create cards
 function createCard(){
-  //var arr = shuffle(classArray);
-  var arr = classArray;
-  var container = $(".container");
-  for(var index=0; index< arr.length; index++){
-    var sceneDiv = $("<div>").addClass("scene");
-    var currentCard = $("<div>").addClass("card");
-    var classCard = arr[index];
-    var frontCard = $("<div>").addClass("front " + classCard);
-    var backCard = $("<div>").addClass("back");
+  let arr = shuffle(classArray);
+  let container = $(".container");
+  for(let index=0; index< arr.length; index++){
+    let sceneDiv = $("<div>").addClass("scene");
+    let currentCard = $("<div>").addClass("card");
+    let classCard = arr[index];
+    let frontCard = $("<div>").addClass("front " + classCard);
+    let backCard = $("<div>").addClass("back");
 
     container.append(sceneDiv);
     sceneDiv.append(currentCard);
@@ -185,19 +151,16 @@ function createCard(){
   }
 }
 
- function shuffle(array) {
+function shuffle(array) {
 
-  var currentIndex = array.length;
-  var temporaryValue;
-  var randomIndex;
+  let currentIndex = array.length;
+  let temporaryValue;
+  let randomIndex;
 
-  // While there remain elements to shuffle
+
   while (0 !== currentIndex) {
-    // Pick a remaining element
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
-
-    // And swap it with the current element
     temporaryValue = array[currentIndex];
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
@@ -205,41 +168,4 @@ function createCard(){
 
   return array;
 
-}
-
-function hideTom(){
-  //hides start game modal
-  $(".start-game").addClass("hide");
-  //starts to play music
-  audio = new Audio("assets/images/153 - Tortimer Island - Hide and Seek.mp3");
-  audio.play();
-
-}
-
-function matchBellsToItem (itemClass){
-  var indexOfItem = null;
-  var index = 0;
-  //uses class name to find bells corlating to item
-  while(itemClass !== costOfItems[index].name){
-    index++;
-  }
-  return costOfItems[index].bells;
-
-}
-
-//make text appear like the game
-function startTextTypewriter() {
-  if (indexStart < startText.length) {
-    document.getElementById("demo").innerHTML += startText.charAt(indexStart);
-    indexStart++;
-    setTimeout(startTextTypewriter, speed);
-  }
-}
-
-function endTextTypewriter() {
-  if (indexEnd < endText.length) {
-    document.getElementById("endtext").innerHTML += endText.charAt(indexEnd);
-    indexEnd++;
-    setTimeout(endTextTypewriter, speed);
-  }
 }

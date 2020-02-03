@@ -1,76 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>Memory Match</title>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Averia Libre" rel="stylesheet">
-   <link rel = "stylesheet" href="assets/css/style.css">
-   <script src = "assets/js/script.js"></script>
+    <title>Memory Match</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Cousine" rel="stylesheet">
+    <link rel = "stylesheet" href="assets/css/style.css">
+    <script src = "assets/js/script.js"></script>
 </head>
 <body>
-
-  <!--START MODAL-->
-  <div class="modal start-game">
-    <img class="speach-bubble" src="assets/images/animal_crossing_dialogue_box_templates.png">
-    <p class="dark-green-font"> Tom Nook </p> <br />
-    <div class="bottom-text css-typing">
-      <p id="demo" class="white-font"></p> <br />
-
-    </div>
-
-    <img class="nook" src="assets/images/tom-nook.png">
-
-  </div>
-
- <!--END MODAL-->
   <div id="end-game" class="modal hide">
-        <img class="speach-bubble" src="assets/images/animal_crossing_dialogue_box_templates.png">
-        <p class="dark-green-font"> Tom Nook </p> <br />
-        <div class="bottom-text">
-          <p class="white-font" id="endtext"></p>
-        </div>
+        <h2> YOU WIN! </h2>
         <div class="button-container">
           <button id="close_btn"> close </button>
           <button id="reset_btn"> upgrade</button>
         </div>
+</div>
 
-        <img class="nook" src="assets/images/tom-nook.png">
 
-  </div>
-
-<!--HEADER-->
   <header>
-    <img class ="logo" src="assets\images\animal-crossing-logo2.png">
-      <div class = "bells">
-        <img src = "assets/images/bells.png">
-        <p> 0 </p>
-      </div>
+    <img src="assets/images/memory-match.png">
   </header>
   <div class="display-game">
-  <!--ASIDE-->
   <aside>
-    <div class="stats-contianer">
-    <h1>Stats</h1>
+    <div class="stats-container">
+      <h1>Stats</h1>
+      <div class= "extra-margin">
+        <div class="stats-content"><p>Games Played</p></div>
+        <div id= "games_played" class="stats-content"><p>0</p></div>
+      </div>
     <div class= "extra-margin">
-    <div class="stats-content"><p>Games Played</p></div>
-    <div id= "games_played" class="stats-content"><p>0</p></div>
+      <div class="stats-content"><p>Attemps</p></div>
+      <div id="attemps" class="stats-content"><p>0</p></div>
     </div>
     <div class= "extra-margin">
-    <div class="stats-content"><p>Attemps</p></div>
-    <div id="attemps" class="stats-content"><p>0</p></div>
-    </div>
-    <div class= "extra-margin">
-    <div class="stats-content"><p>Accuracy</p></div>
-    <div id="Accuracy" class="stats-content"><p>0%</p></div>
+      <div class="stats-content"><p>Accuracy</p></div>
+      <div id="Accuracy" class="stats-content"><p>0%</p></div>
     </div>
   </div>
-
   </aside>
-
-  <!--MAIN-->
   <main>
     <div class="container">
-<!-- CARDS MADE DYNAMICALLY -->
     </div>
   </main>
   </div>
