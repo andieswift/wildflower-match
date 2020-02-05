@@ -271,6 +271,21 @@ button{
   width: 39%;
 }
 
+a{
+  font-family: 'Cousine';
+  text-decoration: none;
+  color: black;
+  opacity: .5;
+  cursor: pointer;
+}
+
+.link-div{
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+
+}
+
 @media screen and (max-width: 1200px ){
   p {
     font-size: 1.3rem;
@@ -380,6 +395,16 @@ button{
     margin-bottom: 0;
 
   }
+
+  a{
+    font-size: 1.5rem;
+  }
+
+  .link-div{
+    margin: 0px;
+    margin-right: 66px;
+  }
+
 }
 
 
@@ -399,6 +424,10 @@ button{
 
   .stats-content p {
     margin-bottom: 30px;
+  }
+
+  .link-div{
+    margin: 7px;
   }
 
 }

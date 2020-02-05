@@ -3,7 +3,7 @@ $(document).ready(intializeApp);
 let firstCardClicked = null;
 let secondCardClicked = null;
 let matches = null;
-const max_matches = 1;
+const max_matches = 9;
 let attemps = null;
 let games_played = 0;
 let lockGame = false;
@@ -117,8 +117,7 @@ function displayStats(){
 }
 
 function createCard(){
-  ///let arr = shuffle(classArray);
-  let arr = classArray;
+  let arr = shuffle(classArray);
   let container = $(".container");
   for(let index=0; index< arr.length; index++){
     let sceneDiv = $("<div>").addClass("scene");
