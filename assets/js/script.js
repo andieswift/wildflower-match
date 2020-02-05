@@ -3,7 +3,7 @@ $(document).ready(intializeApp);
 let firstCardClicked = null;
 let secondCardClicked = null;
 let matches = null;
-const max_matches = 9;
+const max_matches = 1;
 let attemps = null;
 let games_played = 0;
 let lockGame = false;
@@ -19,7 +19,6 @@ let indexEnd = 0;
 function intializeApp(){
   createCard();
   $(".container").on('click','.card', handleCardClick);
-  $("#close_btn").on('click', closeModal);
   $("#reset_btn").on('click', resetGame);
 }
 
@@ -30,6 +29,7 @@ function handleCardClick(event){
   }
   let $target = $(event.currentTarget);
   $target.addClass("clicked");
+  $target.addClass("unclickable");
   if($target.find(".back").hasClass('clicked')){
     return;
   }
@@ -40,6 +40,7 @@ function handleCardClick(event){
 
   if(!firstCardClicked){
     firstCardClicked = $target;
+
   }
 
   else{
@@ -63,6 +64,8 @@ function handleCardClick(event){
       else {
         lockGame = true;
         setTimeout(hideFrontCard, 1500);
+        firstCardClicked.removeClass("unclickable");
+        secondCardClicked.removeClass("unclickable");
 
       }
     displayStats();
@@ -83,12 +86,9 @@ function handleCardClick(event){
   }
 }
 
-function closeModal(){
-  $(".modal").addClass("hide");
-}
 
 function resetGame(){
-  closeModal();
+  $(".modal").addClass("hide");
   matches = 0;
   attemps = 0;
 
@@ -117,7 +117,8 @@ function displayStats(){
 }
 
 function createCard(){
-  let arr = shuffle(classArray);
+  ///let arr = shuffle(classArray);
+  let arr = classArray;
   let container = $(".container");
   for(let index=0; index< arr.length; index++){
     let sceneDiv = $("<div>").addClass("scene");
