@@ -23,6 +23,7 @@ img{
   margin-right: auto;
 }
 
+
 .display-game,
 .stats-container,
 .container{
@@ -233,8 +234,9 @@ main {
 
 .modal img{
   position: relative;
-  top: 41%;
+  top: 32%;
   right: 2%;
+  width: 50%;
 }
 
 .modal .bottom-text{
@@ -247,7 +249,7 @@ main {
 
 .button-container{
   position: relative;
-  top: 42%;
+  top: 38%;
   left: 26%;
   width: 58%;
   }
@@ -272,6 +274,10 @@ button{
   button {
     font-size: 1.5rem;
   }
+
+  .modal img {
+    top: 38%;
+  }
 }
 
 
@@ -286,6 +292,8 @@ button{
       top: 35%;
     }
   }
+
+
 
 @media only screen and (min-width: 1024px) and (max-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
     p {
