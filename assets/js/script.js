@@ -3,7 +3,7 @@ $(document).ready(intializeApp);
 let firstCardClicked = null;
 let secondCardClicked = null;
 let matches = null;
-const max_matches = 1;
+const max_matches = 9;
 let attemps = null;
 let games_played = 0;
 let lockGame = false;
