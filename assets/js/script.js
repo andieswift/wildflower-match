@@ -3,26 +3,17 @@ $(document).ready(intializeApp);
 let firstCardClicked = null;
 let secondCardClicked = null;
 let matches = null;
-const max_matches = 9;
+const max_matches = 1;
 let attemps = null;
 let games_played = 0;
 let lockGame = false;
-let audio = null;
 
-let classArray = ["apple", "apple", "banana", "banana", "orange", "orange", "seaBass", "seaBass", "shark",
-                  "shark", "bee", "bee", "butterfly", "butterfly", "hornedAtlas", "hornedAtlas",
-                  "redSnapper", "redSnapper"];
-
-let costOfItems = [
-            {name: "front apple", bells: 500 }, { name: "front banana", bells: 500 }, { name: "front orange", bells: 500},
-            {name: "front seaBass", bells: 160}, {name: "front shark", bells: 15000}, {name: "front bee", bells: 2500},
-            {name: "front butterfly", bells: 2500}, {name: "front hornedAtlas", bells: 8000}, {name: "front redSnapper", bells: 3000}
-                    ];
+let classArray = ["flower1", "flower2", "flower3", "flower4", "flower5", "flower6",
+                  "flower7", "flower8", "flower9", "flower1","flower2", "flower3",
+                  "flower4", "flower5", "flower6", "flower7", "flower8", "flower9"];
 
 let indexStart = 0;
 let speed = 100;
-
-
 let indexEnd = 0;
 
 function intializeApp(){
@@ -34,14 +25,11 @@ function intializeApp(){
 
 
 function handleCardClick(event){
-
-  let $target = $(event.currentTarget);
-  $target.addClass("clicked");
-
-  if(lockGame){
+  if(lockGame || firstCardClicked !== null && secondCardClicked !== null){
     return;
   }
-
+  let $target = $(event.currentTarget);
+  $target.addClass("clicked");
   if($target.find(".back").hasClass('clicked')){
     return;
   }
@@ -52,37 +40,33 @@ function handleCardClick(event){
 
   if(!firstCardClicked){
     firstCardClicked = $target;
-
   }
 
-    else{
-      secondCardClicked = $target;
-      attemps++;
+  else{
+    secondCardClicked = $target;
+    attemps++;
 
-      let firstFront = firstCardClicked.find(".front");
-      let secondFront = secondCardClicked.find(".front");
-      let firstCardClickedURL = firstFront.css("background-color");
-      let secondCardClickedURL = secondFront.css("background-color");
-          if(firstCardClickedURL === secondCardClickedURL){
-            matches++;
-            let cardName = front.attr('class');
-            firstCardClicked = null;
-            secondCardClicked = null;
-            bellsCount += matchBellsToItem(cardName);
+    let firstFront = firstCardClicked.find(".front");
+    let secondFront = secondCardClicked.find(".front");
+    let firstCardClickedURL = firstFront.css("background-color");
+    let secondCardClickedURL = secondFront.css("background-color");
+      if(firstCardClickedURL === secondCardClickedURL){
+        matches++;
+        let cardName = front.attr('class');
+        firstCardClicked = null;
+        secondCardClicked = null;
+        if(matches === max_matches){
+          setTimeout(endGameModal, 1500);
+          games_played++;
+        }
+      }
+      else {
+        lockGame = true;
+        setTimeout(hideFrontCard, 1500);
 
-            if(matches === max_matches){
-
-                  setTimeout(endGameModal, 1500);
-                  games_played++;
-                }
-          }
-          else{
-            lockGame = true;
-            setTimeout(hideFrontCard, 1500);
-
-          }
-        displayStats();
-    }
+      }
+    displayStats();
+  }
 
 
   function endGameModal(){
@@ -107,7 +91,6 @@ function resetGame(){
   closeModal();
   matches = 0;
   attemps = 0;
-  bellsCount = 0;
 
   displayStats();
   $("#Accuracy").text("0%");
@@ -131,7 +114,6 @@ function displayStats(){
   $("#games_played p").text(games_played);
   $("#attemps p").text(attemps);
   $("#Accuracy p").text(accuracy);
-  $(".bells p").text(bellsCount);
 }
 
 function createCard(){

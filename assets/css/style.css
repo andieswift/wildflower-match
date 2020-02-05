@@ -3,18 +3,22 @@ body{
   font-family: 'Cousine';
   height: 100vh;
   width: 100vw;
-  background-image: url("../images/leaf-background.jpg");
-  background-size: 100%;
+  background-image: url("../images/paper-background.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: rgb(255, 208, 0);
 }
 
 
 header{
-  height: 15vh;
+  height: 15%;
 }
 
 img{
   display: block;
-  width: 40%;
+  width: 30%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -23,8 +27,14 @@ img{
 .stats-container,
 .container{
   display: flex;
+  margin:auto;
 }
 
+.container{
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+}
 .display-game {
   height: 78vh;
   width: 100vw;
@@ -77,13 +87,6 @@ main {
   width: 100%;
 }
 
-.container {
-  flex-wrap: wrap;
-  width: 98%;
-  height: 100%;
-}
-
-
 .scene{
   margin: 5px;
   width: 15%;
@@ -99,6 +102,7 @@ main {
   transition: transform 1s;
   transform-style: preserve-3d;
 
+
 }
 
 .back, .front{
@@ -109,12 +113,13 @@ main {
   position: absolute;
   border-width: 3px 3px;
   backface-visibility: hidden;
+  border-radius: 15%;
 
 }
 
 .back{
   background-color: black;
-  background-image: url("../images/flower-backing.jpg")
+  background-image: url("../images/leaf-logo.png")
 }
 
 .front{
@@ -126,39 +131,80 @@ main {
 }
 
 
-.apple{
-  background-color: lightpink;
+.flower1{
+  background-color: #fbf4f9;
+  background-image: url("../images/flower1.png");
+  background-size: 20%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
-.banana{
-  background-color: lightcoral;
+.flower2{
+  background-color: #f6e7e6;
+  background-image: url("../images/flower2.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
-.orange{
-  background-color: lightsalmon;
+.flower3{
+  background-color: #f6e5f5;
+  background-image: url("../images/flower3.png");
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
-.seaBass {
-  background-color: palegoldenrod;
+.flower4 {
+  background-color: #f1f9f9;
+  background-image: url("../images/flower4.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
-.redSnapper{
-  background-color: palegreen;
+.flower5{
+  background-color: #e1f2fb;
+  background-image: url("../images/flower5.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
-.shark{
-  background-color: lightgreen;
+.flower6{
+  background-color: #f3dfe3;
+  background-image: url("../images/flower6.png");
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
-.bee{
-  background-color: lightseagreen;
+.flower7{
+  background-color: #ffeadb;
+  background-image: url("../images/flower7.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
-.butterfly{
-  background-color: lightskyblue;
+.flower8{
+  background-color: #f6f4e6;
+  background-image: url("../images/flower8.png");
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
-.hornedAtlas{
-  background-color: lavender;
+.flower9{
+  background-color: #f1f1f6;
+  background-image: url("../images/flower9.png");
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
 .hide{
@@ -172,13 +218,23 @@ main {
   position: fixed;
   z-index: 1;
   overflow: none;
-  background-color: rgba(0,0,0,0.4);
+  background-image: url(../images/paper-clip-3309924_1920.png);
+  background-position: center;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-color: rgb(0,0,0,.5);
 }
 
 #end-game p {
   display: inline-block;
   position: relative;
 
+}
+
+.modal img{
+  position: relative;
+  top: 41%;
+  right: 2%;
 }
 
 .modal .bottom-text{
@@ -190,58 +246,61 @@ main {
 }
 
 .button-container{
-  display: inline-block;
   position: relative;
-  top: 12%;
-  left: 17%;
-  width: 23%;
+  top: 42%;
+  left: 26%;
+  width: 58%;
   }
 
 button{
+  font-family:  'Cousine';
+  font-size: 2rem;
   display: inline-block;
-  background-color: white;
-  border: 2px solid rgb(243, 175, 48);
+  background-color: transparent;
+  border: 5px solid black;
   border-radius: 15px;
   padding: 2%;
   cursor: pointer;
-  margin: 5%;
-  width: 36%;
+  margin: 2%;
+  width: 39%;
 }
 
 @media screen and (max-width: 1200px ){
-  * {
-    font-size: 12px;
+  p {
+    font-size: 1.3rem;
+  }
+  button {
+    font-size: 1.5rem;
   }
 }
-@media screen and (max-width: 703px ){
-  * {
-    font-size: 10px;
-  }
 
-  aside {
-    width: 12%;
-  }
-
- .scene{
-  width: 14%;
-  height: 30.33%;
-}
-
-}
 
 @media screen and (max-width: 1000px ){
-  * {
-    font-size: 10px;
+  p {
+    font-size: 1rem;
   }
+
 }
 
+@media only screen and (min-width: 1024px) and (max-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
+    p {
+        font-size: 1.5rem;
+    }
+  }
 
-@media only screen and (max-device-width: 1024px) and (orientation: portrait),
-(max-width: 560px) {
+@media only screen and (max-device-width: 1024px) and (orientation: portrait), (max-width: 560px) {
   .stats-container,
   .stats-content{
     flex-direction: row;
     align-items: center;
+  }
+
+  img{
+    width: 50%;
+  }
+
+  p{
+    font-size: 2rem;
   }
 
   h1{
@@ -301,28 +360,64 @@ button{
     margin-bottom: 0;
 
   }
+}
 
-
-  @media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
-    * {
-        font-size: 8px;
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape){
+    .modal img {
+      width: 52%;
+      top: 24%;
     }
 
+    .button-container{
+      top: 35%;
+    }
   }
 
-@media only screen and (max-device-width: 414px) and (orientation: portrait),
-(max-device-width: 823px) and (orientation: landscape),
-(max-width: 950px) and (orientation: landscape) {
-    * {
-        font-size: 13px;
-    }
+
+
+@media screen and (max-width: 703px ){
+  img{
+    size: 47%;
+  }
+  p {
+    font-size: 1rem;
+  }
+
+  aside {
+    width: 12%;
+  }
+
+  .scene{
+  width: 14%;
+  height: 30.33%;
+}
 }
 
-@media only screen and (max-device-width: 568px) and (orientation: landscape),
-(max-width: 700px) {
-    * {
-        font-size: 13px;
-    }
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 812px)
+and (-webkit-device-pixel-ratio : 3)
+and (orientation : landscape) {
+  .modal img{
+    width: 50%;
+    top: 21%
+  }
+
+  .button-container{
+    top: 26%;
+  }
 }
 
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 667px)
+and (orientation : landscape) {
+  .modal img{
+    width: 50%;
+    top: 21%
+  }
+
+  .button-container{
+    top: 26%;
+  }
 }
