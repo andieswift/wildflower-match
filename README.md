@@ -18,4 +18,4 @@ Link: https://wildflower-match.andieswift.dev/
 - The app will calculate accuracy
 
 # Example of App
-![Screenshot of App](assets/images/screenShot.PNG)
+![Screenshot of App](assets/images/screen-shot.PNG)
