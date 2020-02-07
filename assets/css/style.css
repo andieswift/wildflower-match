@@ -2,7 +2,6 @@ body{
   margin: 0px;
   font-family: 'Cousine';
   height: 100vh;
-  width: 100vw;
   background-image: url("../images/paper-background.jpg");
   background-repeat: no-repeat;
   background-position: center center;
@@ -301,7 +300,11 @@ a{
   }
 }
 
-
+@media only screen and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait){
+  .button-container{
+      top: 43%;
+    }
+  }
 
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape){
   img{

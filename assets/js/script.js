@@ -93,7 +93,7 @@ function resetGame(){
   attemps = 0;
 
   displayStats();
-  $("#Accuracy").text("0%");
+  $("#Accuracy p").text("0%");
   $(".container").empty();
   createCard();
   $(".start-game").removeClass("hide");
