@@ -114,16 +114,19 @@ main {
   background-image: url("../images/leaf-logo.png")
 }
 
+.card:hover {
+  border-radius: 15%;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.301);
+  transform: scale(1.1);
+}
+
 .front{
   transform: rotateY(-180deg);
 }
 
-.clicked {
-  transform: rotateY(180deg);
-}
-
 .unclickable {
   pointer-events: none;
+  transform: rotateY(180deg);
 }
 
 .flower1{
@@ -273,14 +276,10 @@ a{
   display: flex;
   justify-content: flex-end;
   height: 5vh;
-  margin-right: 10%;
+  margin-right: 5%;
 }
 
-.card:hover {
-  border-radius: 15%;
-  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.301);
-  transform: scale(1.1);
-}
+
 
 
 @media only screen and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait){

@@ -28,9 +28,8 @@ function handleCardClick(event){
     return;
   }
   let $target = $(event.currentTarget);
-  $target.addClass("clicked");
   $target.addClass("unclickable");
-  if($target.find(".back").hasClass('clicked')){
+  if($target.find(".back").hasClass('unclickable')){
     return;
   }
 
@@ -64,9 +63,6 @@ function handleCardClick(event){
       else {
         lockGame = true;
         setTimeout(hideFrontCard, 1500);
-        firstCardClicked.removeClass("unclickable");
-        secondCardClicked.removeClass("unclickable");
-
       }
     displayStats();
   }
@@ -77,8 +73,8 @@ function handleCardClick(event){
   }
 
   function hideFrontCard() {
-    firstCardClicked.removeClass("clicked");
-    secondCardClicked.removeClass("clicked");
+    firstCardClicked.removeClass("unclickable");
+    secondCardClicked.removeClass("unclickable");
 
     firstCardClicked = null;
     secondCardClicked = null;
